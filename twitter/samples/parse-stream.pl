@@ -7,12 +7,15 @@ use Kafka::Message;
 use Data::Dumper;
 use JSON;
 
+use charnames ':full';
+binmode(STDOUT, ":utf8");
+
 # connect to local cluster with the defaults
 my $connection = Kafka::Connection->new( host => 'localhost' );
 my $io = Kafka::IO->new( host => 'localhost' );
 $consumer = Kafka::Consumer->new( Connection => $connection );
 my $topic = 'twitter_all_streams';
-$json = JSON->new( allow_nonref => '0');
+$json = JSON->new->allow_nonref;
 
 use Kafka qw(
 	$DEFAULT_MAX_BYTES
@@ -34,7 +37,7 @@ print "Received offset: $_" foreach @$offsets;
 my $messages = $consumer->fetch(
 	$topic,                      # topic
 	0,                              # partition
-	0,                              # offset
+	337,                              # offset
 	$DEFAULT_MAX_BYTES              # Maximum size of MESSAGE(s) to receive
 );
 
@@ -44,8 +47,8 @@ foreach my $message ( @$messages ) {
 		#print Dumper($message->payload);
 		my $tweet = $message->payload;
 		chop($tweet);
-		$tweet = to_json({ $tweet });
-		print Dumper($tweet);
+		$tweet = from_json( $tweet );
+		print $tweet->{'text'};
 		#print "#########\n\n payload    : ". $message->payload . "#############\n\n\n";
 		#print 'key        : ', $message->key . "\n";
 		#print 'offset     : ', $message->offset . "\n";

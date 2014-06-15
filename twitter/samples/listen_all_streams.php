@@ -25,7 +25,7 @@ class FilterTrackConsumer extends OauthPhirehose
     $data = json_decode($status, true);
     if (is_array($data) && isset($data['user']['screen_name'])) {
     #  print $data['user']['screen_name'] . ': ' . urldecode($data['text']) . "\n";
-	print json_encode($data) ."\n";
+	print json_encode($data) .",\n";
     }
   }
 }
