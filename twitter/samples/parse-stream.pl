@@ -48,7 +48,11 @@ foreach my $message ( @$messages ) {
 		my $tweet = $message->payload;
 		chop($tweet);
 		$tweet = from_json( $tweet );
-		print $tweet->{'text'};
+		print "Source: " . $tweet->{'source'} . "\n";
+		print "Text: " . $tweet->{'text'} . "\n";
+		print "URL: " . $tweet->{'url'} . "\n";
+		print "ScreenName: " . $tweet->{'user'}{'screen_name'} . "\n";
+		print "UserID: " . $tweet->{'user'}{'id'} . "\n";
 		#print "#########\n\n payload    : ". $message->payload . "#############\n\n\n";
 		#print 'key        : ', $message->key . "\n";
 		#print 'offset     : ', $message->offset . "\n";
