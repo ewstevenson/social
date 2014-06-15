@@ -23,9 +23,9 @@ class FilterTrackConsumer extends OauthPhirehose
      *       enqueued and processed asyncronously from the collection process. 
      */
     $data = json_decode($status, true);
-	print_r($data);
     if (is_array($data) && isset($data['user']['screen_name'])) {
-      print $data['user']['screen_name'] . ': ' . urldecode($data['text']) . "\n";
+    #  print $data['user']['screen_name'] . ': ' . urldecode($data['text']) . "\n";
+	print json_encode($data) ."\n";
     }
   }
 }
