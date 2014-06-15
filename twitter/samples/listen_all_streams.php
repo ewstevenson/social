@@ -40,7 +40,7 @@ define("OAUTH_SECRET", "$access_token_secret");
 
 // Start streaming
 $sc = new FilterTrackConsumer(OAUTH_TOKEN, OAUTH_SECRET, Phirehose::METHOD_FILTER);
-$sc->setTrack(array('join', 'jion', '#join', '#jion'));
+$sc->setTrack(array('.'));
 $sc->consume();
 
 ?>
