@@ -37,7 +37,7 @@ print "Received offset: $_" foreach @$offsets;
 my $messages = $consumer->fetch(
 	$topic,                      # topic
 	0,                              # partition
-	337,                              # offset
+	377,                              # offset
 	$DEFAULT_MAX_BYTES              # Maximum size of MESSAGE(s) to receive
 );
 
