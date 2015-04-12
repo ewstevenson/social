@@ -26,7 +26,7 @@ while (1) {
 				$url = $trend->trends[$i]->{'url'};
 				if ($trend->{'message'}) {
 					print $trend->{'message'};
-					sleep(8);
+					sleep(7);
 				}
 			}
 		}
