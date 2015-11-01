@@ -11,8 +11,8 @@ function unfollow_user($bot, $userid) {
 
 }
 
-function get_suggested($bot) {
-	return $bot->get('https://api.twitter.com/1.1/users/suggestions/twitter.json');
+function get_suggested($bot,$slug) {
+	return $bot->get('https://api.twitter.com/1.1/users/suggestions/'.$slug.'.json');
 }
 
 function get_friend_ids($bot, $userid) {

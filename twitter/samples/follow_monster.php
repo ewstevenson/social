@@ -9,12 +9,11 @@
 **/
 
 
-include_once('../conf/twitter-info.php'); // INCLUDE THE BOT AND AUTH
 include_once('../conf/twitter-bot.php'); // INCLUDE THE BOT AND AUTH
 include_once('../friends_and_followers/friends_and_followers.php'); // INCLUDE THE FUNCTIONS
 
 $twitter_bot = twitter_login(); // CREATE THE BOT
-$get_em = get_suggested($twitter_bot); // RETURNS LIST OF 'RANDOM' TWITTER IDS
+$get_em = get_suggested($twitter_bot, 'sports'); // RETURNS LIST OF 'RANDOM' TWITTER IDS
 $friend_ids = get_friend_ids($twitter_bot, $owner_id); // RETURNS CURSORED LIST OF FRIENDS FOR PROVIDED TWITTER ID. THIS SHOULD BE YOURS. 
 
 
@@ -26,9 +25,9 @@ $friend_ids = get_friend_ids($twitter_bot, $owner_id); // RETURNS CURSORED LIST 
 **/
 
 foreach ($friend_ids->{'ids'} as $friend_id) {
-	$unfollow = unfollow_user($twitter_bot, $friend_id);
-	print_r($unfollow);
-	sleep(30);
+#	$unfollow = unfollow_user($twitter_bot, $friend_id);
+#	print_r($unfollow);
+#	sleep(30);
 }
 
 // die;
