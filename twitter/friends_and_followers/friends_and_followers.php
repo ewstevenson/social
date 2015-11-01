@@ -11,8 +11,15 @@ function unfollow_user($bot, $userid) {
 
 }
 
-function get_suggested($bot,$slug) {
-	return $bot->get('https://api.twitter.com/1.1/users/suggestions/'.$slug.'.json');
+function get_suggested($bot) {
+	$get_slugs = get_slugs($bot);
+	$slugs = Array();
+	$i = 0;
+	foreach ($get_slugs as $slug) {
+		$slugs[$i] = $bot->get('https://api.twitter.com/1.1/users/suggestions/'.$slug->{'slug'}.'.json');
+		$i++;
+	}
+	return $slugs;
 }
 
 function get_friend_ids($bot, $userid) {
@@ -29,7 +36,7 @@ function get_followers($bot, $userid, $cursor) {
 function get_slugs($bot) {
 	$get_slugs = 'https://api.twitter.com/1.1/users/suggestions.json';
 	return $bot->get($get_slugs);
-
-
 }
+
+
 ?>
