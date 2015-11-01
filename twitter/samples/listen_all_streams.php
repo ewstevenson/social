@@ -5,6 +5,8 @@ require_once('../streaming/lib/UserstreamPhirehose.php');
 require_once('../streaming/lib/OauthPhirehose.php');
 require_once('../conf/twitter-info.php');
 
+## BE SURE TO SYNC YOUR CLOCK!
+
 /**
  * Example of using Phirehose to display a live filtered stream using track words 
  */

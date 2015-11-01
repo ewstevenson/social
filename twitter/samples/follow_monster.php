@@ -33,7 +33,7 @@ $get_suggested_users = get_suggested($twitter_bot); // RETURNS LIST OF 'SUGGESTE
 // END TRIM
 
 foreach ($get_suggested_users as $user) {
-	#print_r($user);
+	print_r($user);
 	print 'Following: '.$user->{'name'}." ".$user->{'id_str'}."\n";
 	$follow = follow_user($twitter_bot, $user->{'id_str'});
 	sleep(120);
