@@ -26,4 +26,10 @@ function get_followers($bot, $userid, $cursor) {
 
 }
 
+function get_slugs($bot) {
+	$get_slugs = 'https://api.twitter.com/1.1/users/suggestions.json';
+	return $bot->get($get_slugs);
+
+
+}
 ?>
