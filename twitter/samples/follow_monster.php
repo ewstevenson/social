@@ -12,7 +12,7 @@ include_once('../conf/twitter-bot.php'); // INCLUDE THE BOT AND AUTH
 include_once('../friends_and_followers/friends_and_followers.php'); // INCLUDE THE FUNCTIONS
 
 $twitter_bot = twitter_login(); // CREATE THE BOT
-$get_suggested_users = get_suggested($twitter_bot); // RETURNS LIST OF 'SUGGESTED' TWITTER IDS
+$get_suggested_user_lists = get_suggested($twitter_bot); // RETURNS LIST OF 'SUGGESTED' TWITTER IDS
 #$friend_ids = get_friend_ids($twitter_bot, $owner_id); // RETURNS CURSORED LIST OF FRIENDS FOR PROVIDED TWITTER ID. THIS SHOULD BE YOURS. 
 
 
@@ -32,11 +32,16 @@ $get_suggested_users = get_suggested($twitter_bot); // RETURNS LIST OF 'SUGGESTE
 // die;
 // END TRIM
 
-foreach ($get_suggested_users as $user) {
-	print_r($user);
-	print 'Following: '.$user->{'name'}." ".$user->{'id_str'}."\n";
-	$follow = follow_user($twitter_bot, $user->{'id_str'});
-	sleep(120);
+foreach ($get_suggested_user_lists as $user_list) {
+	#print_r($user_list);
+	foreach ($user_list as $users) {
+		foreach ($users as $user) { 
+			print_r($user);
+			print 'Following: '.$user->{'name'}." ".$user->{'id_str'}."\n";
+			$follow = follow_user($twitter_bot, $user->{'id_str'});
+			sleep(120);
+		}
+	}
 }
 
 ?>
