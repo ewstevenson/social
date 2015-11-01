@@ -13,8 +13,8 @@ include_once('../friends_and_followers/friends_and_followers.php'); // INCLUDE T
 
 $twitter_bot = twitter_login(); // CREATE THE BOT
 $get_suggested_users = get_suggested($twitter_bot); // RETURNS LIST OF 'SUGGESTED' TWITTER IDS
-print_r($get_suggested_users);
-die;
+#print_r($get_suggested_users);
+#die;
 #$friend_ids = get_friend_ids($twitter_bot, $owner_id); // RETURNS CURSORED LIST OF FRIENDS FOR PROVIDED TWITTER ID. THIS SHOULD BE YOURS. 
 
 
