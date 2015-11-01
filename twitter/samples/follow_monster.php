@@ -1,7 +1,7 @@
 <?php
 
 /**
-# A sample script that follows 'RANDOM' users in a loop.
+# A sample script that follows 'SUGGESTED' users in a loop.
 #
 # A sample script that unfollows friends in a loop
 # 
@@ -13,8 +13,6 @@ include_once('../friends_and_followers/friends_and_followers.php'); // INCLUDE T
 
 $twitter_bot = twitter_login(); // CREATE THE BOT
 $get_suggested_users = get_suggested($twitter_bot); // RETURNS LIST OF 'SUGGESTED' TWITTER IDS
-#print_r($get_suggested_users);
-#die;
 #$friend_ids = get_friend_ids($twitter_bot, $owner_id); // RETURNS CURSORED LIST OF FRIENDS FOR PROVIDED TWITTER ID. THIS SHOULD BE YOURS. 
 
 
@@ -34,10 +32,11 @@ $get_suggested_users = get_suggested($twitter_bot); // RETURNS LIST OF 'SUGGESTE
 // die;
 // END TRIM
 
-foreach ($get_suggested_users as $suggested_user_list) {
-			print 'Following: '.$user->{'id_string'}."\n";
-			$follow = follow_user($twitter_bot, $user->{'id_string'});
-			sleep(120);
+foreach ($get_suggested_users as $user) {
+	print_r($user);
+	print 'Following: '.$user->{'id_string'}."\n";
+	$follow = follow_user($twitter_bot, $user->{'id_string'});
+	sleep(120);
 }
 
 ?>
